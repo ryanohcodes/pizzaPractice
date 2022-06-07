@@ -6,29 +6,17 @@ const PORT = 8000;
 
 app.use(cors())
 
-const tea = {
-    'oolong':{
-        'type':'black',
-        'origin':'yo mammas house',
-        'waterTemp': 200,
-        'steepTime': 180,
-        'caffined': true,
-        'flavor': 'delicious'
+const pizza = {
+    'dominos':{
+        'worth': true,
+        'flavor': true
     },
-    'matcha':{
-        'type':'green',
-        'origin':'yo mammas house',
-        'waterTemp': 200,
-        'steepTime': 180,
-        'caffined': false,
-        'flavor': 'delicious'
+    'papaJohn':{
+        'worth': false,
+        'flavor': false
     },
     'unknown':{
-        'type':'unknown',
-        'origin':'unknown',
-        'waterTemp': 'unknown',
-        'steepTime': 'unknown',
-        'caffined': 'unknown',
+        'worth': 'unknown',
         'flavor': 'unknown'
     }
 }
@@ -38,11 +26,11 @@ app.get('/',(request, response)=>{
 });
 
 app.get('/api/:name', (request,response)=>{
-    const teaName = request.params.name.toLowerCase();
-    if(tea[teaName]){
-        response.json(tea[teaName])
+    const pizzaName = request.params.name.toLowerCase();
+    if(pizza[pizzaName]){
+        response.json(pizza[pizzaName])
     }else{
-        response.json(tea['unknown'])
+        response.json(pizza['unknown'])
     }
     
 });
